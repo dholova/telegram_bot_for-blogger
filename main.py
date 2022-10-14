@@ -4,13 +4,16 @@ from telebot import types
 bot = telebot.TeleBot('5727769299:AAGJ57dYBWdOUOczmkj8NMiNILrIaayZJUg')
 
 
+
+
 @bot.message_handler(commands=['start', 'help'])
 def main(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     url_btn = types.KeyboardButton(text='Подкасти')
-    url_btn1 = types.KeyboardButton(text='Інші відео')
+    url_btn1 = types.KeyboardButton(text='Youtube')
     url_btn11 = types.KeyboardButton(text='Донат')
     url_btn111 = types.KeyboardButton(text='Телеграм канал')
+
 
     markup.add(url_btn, url_btn1, url_btn11, url_btn111)
 
@@ -28,6 +31,7 @@ def bot_message(message):
     url_btn6 = types.InlineKeyboardButton(text='Як працює запит в браузері?', url='https://www.youtube.com/watch?v=NGs0Ug_7i_Y&ab_channel=Stasoz')
     markup4 = types.InlineKeyboardMarkup()
     url_btn7 = types.InlineKeyboardButton(text='Телеграм канал', url='https://t.me/stasozit')
+    url_btn61 = types.InlineKeyboardButton(text='Назад')
 
     markup2.add(url_btn2)
     markup3.add(url_btn3, url_btn4, url_btn5, url_btn6)
@@ -35,8 +39,30 @@ def bot_message(message):
 
     if message.chat.type == 'private':
         if message.text == 'Подкасти':
-            bot.send_message(message.chat.id, 'Оберіть, будь ласка, подкаст для прослуховування😊', reply_markup=markup2)
-        elif message.text == 'Інші відео':
+            markup5 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            url_btn111 = types.KeyboardButton(text='На Youtube')
+            url_btn222 = types.KeyboardButton(text='На SoundCloud')
+            url_btn333 = types.KeyboardButton(text='На Spotify')
+            url_btn444 = types.KeyboardButton(text='Назад')
+
+            markup5.add(url_btn111, url_btn222, url_btn333, url_btn444)
+            bot.send_message(message.chat.id, 'На якій платформі будеш слухати?😊', reply_markup=markup5)
+        if message.text == 'На Youtube':
+            markup6 = types.InlineKeyboardMarkup()
+            url_btn60 = types.InlineKeyboardButton(text='Подкаст | Розмова з ІТ-новачком', url='https://www.youtube.com/watch?v=GbOQ7sQNDKo')
+            # url_btn61 = types.InlineKeyboardButton(text='Назад')
+
+            markup6.add(url_btn60)
+            bot.send_message(message.chat.id, 'Обери подкаст😊', reply_markup=markup6)
+        elif message.text == 'Назад':
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            url_btn = types.KeyboardButton(text='Подкасти')
+            url_btn1 = types.KeyboardButton(text='Youtube')
+            url_btn11 = types.KeyboardButton(text='Донат')
+            url_btn111 = types.KeyboardButton(text='Телеграм канал')
+            markup.add(url_btn, url_btn1, url_btn11, url_btn111)
+            bot.send_message(message.chat.id, 'Привіт, що хочеш послухати?)', reply_markup=markup)
+        elif message.text == 'Youtube':
             bot.send_message(message.chat.id, 'Оберіть, будь ласка, відео😊', reply_markup=markup3)
         elif message.text == 'Донат':
             bot.send_message(message.chat.id, 'Карта ПриватБанк для донату:')
