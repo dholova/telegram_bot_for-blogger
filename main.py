@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot('5727769299:AAGJ57dYBWdOUOczmkj8NMiNILrIaayZJUg')
+bot = telebot.TeleBot('###############################################')
 
 
 
