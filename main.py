@@ -65,7 +65,7 @@ def bot_message(message):
             bot.send_message(message.chat.id, 'Оберіть, будь ласка, відео😊', reply_markup=markup3)
         elif message.text == 'Донат':
             bot.send_message(message.chat.id, 'Карта ПриватБанк для донату:')
-            bot.send_message(message.chat.id, '5457082227969750')
+            bot.send_message(message.chat.id, '*******************')
         elif message.text == 'Телеграм канал':
             bot.send_message(message.chat.id, 'Підпишись, будь ласка, на телеграм канал😊', reply_markup=markup4)
 
